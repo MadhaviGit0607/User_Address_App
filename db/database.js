@@ -8,6 +8,8 @@ const db = new sqlite3('./database.db', (err) => {
 
 // Create tables if they do not exist
 db.serialize(() => {
+    db.run(`DROP TABLE IF EXISTS User`);
+    
     db.run(`CREATE TABLE User (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL
